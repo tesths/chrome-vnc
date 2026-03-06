@@ -33,18 +33,14 @@ fluxbox &
 echo "[-] Starting x11vnc..."
 x11vnc -display $DISPLAY -forever -shared -passwd "$VNC_PASSWORD" -bg -quiet
 
-echo "[-] Starting Google Chrome..."
-# 关键修改：
-# 1. 添加 --test-type: 移除 "unsupported command line flag" 警告条
-# 2. 保持 --disable-dev-shm-usage: 防止 Zeabur 内存崩溃
-# 3. 添加 --no-default-browser-check: 防止"设为默认浏览器"弹窗
+echo "[-] Starting Google Chrome on port 9111..."
 
 exec google-chrome-stable \
   --no-sandbox \
   --test-type \
   --disable-gpu \
   --remote-debugging-address=0.0.0.0 \
-  --remote-debugging-port=9222 \
+  --remote-debugging-port=9111 \   <-- 这里修改为 9111
   --user-data-dir=/home/chromeuser/chrome-data \
   --window-size=${SCREEN_WIDTH},${SCREEN_HEIGHT} \
   --window-position=0,0 \
