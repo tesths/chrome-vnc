@@ -36,6 +36,7 @@ RUN mkdir -p /home/chromeuser/chrome-data && \
 USER chromeuser
 WORKDIR /home/chromeuser
 
-EXPOSE 5900 9222
+# 暴露 VNC (5900) 和 Chrome CDP (9111)
+EXPOSE 5900 9111
 
 ENTRYPOINT ["/entrypoint.sh"]
